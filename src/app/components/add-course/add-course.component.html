@@ -1,0 +1,75 @@
+<div class="form-control mt-3 alert alert-dark ml-3 m-3">
+  <form [formGroup]="formValue">
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputCourseName4">Course Name</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="courseName"
+          placeholder="Enter Course Name"
+          required
+        />
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputPlatform4">Platform</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="platform"
+          placeholder="Enter Platform"
+          required
+        />
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="inputCourseUrl">Course URL</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="courseUrl"
+          placeholder="Enter Course Url"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputNoOfHours4">No of Hours</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="noOfHours"
+          placeholder="Enter Hours"
+          required
+        />
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputStartDate4">Start Date</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="startDate"
+          placeholder="Enter Start Date"
+          required
+        />
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="inputEndDrte4">End Date</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="endDate"
+          placeholder="Enter End Date"
+          required
+        />
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="postCourseDetails()">
+      Submit
+    </button>
+  </form>
+</div>

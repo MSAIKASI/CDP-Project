@@ -9,7 +9,7 @@ export class AddCourseService {
   constructor(private httpClient: HttpClient) { }
 
   addNewCourse(data: any) {
-    return this.httpClient.post<any>('http://localhost:8080/api/addCourse/create', data).pipe(
+    return this.httpClient.post<any>('http://localhost:8080/api/addcourse/create', data).pipe(
       map((res: any) => {
         return res;
       })
@@ -17,7 +17,7 @@ export class AddCourseService {
   }
   
   getAllCourses() {
-    return this.httpClient.get<any>('http://localhost:8080/api/addCourse/findallcourses').pipe(
+    return this.httpClient.get<any>('http://localhost:8080/api/addcourse/findallcourses').pipe(
       map((res: any) => {
         return res;
       })

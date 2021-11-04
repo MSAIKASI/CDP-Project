@@ -3,7 +3,8 @@ export class AddCourseModel{
   courseName: string = '';
   platform: string = '';
   courseUrl: string = '';
+  noOfHours: number = 0;
   startDate: string = '';
   endDate: string = '';
-  noOfHours: number = 0;
+  
 }

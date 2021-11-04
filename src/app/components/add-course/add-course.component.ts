@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  FormBuilder,
-  FormControl,FormGroup } from '@angular/forms';
+import {  FormBuilder,FormGroup } from '@angular/forms';
 import { AddCourseModel } from 'src/app/models/addCourse.model';
 import { AddCourseService } from 'src/app/services/addCourse.service';
 
@@ -13,21 +12,22 @@ import { AddCourseService } from 'src/app/services/addCourse.service';
 export class AddCourseComponent implements OnInit {
   formValue!: FormGroup;
   addCourseModel: AddCourseModel = new AddCourseModel();
-  courseData :any;
+  courseData! :any;
 
-  constructor(private formbuilder: FormBuilder,
-    private addCourseService: AddCourseService,) { }
+  constructor(
+    private formbuilder: FormBuilder,
+    private addCourseService: AddCourseService) { }
 
   ngOnInit(): void {
     this.formValue = this.formbuilder.group({
       courseName: [''],
       platform: [''],
       courseUrl: [''],
-      noOfHours: [''],
+      noOfHours: 0,
       startDate: [''],
       endDate: [''],
     });
-    this.getAllCourses();
+    this.getAllCourseDetails();
   }
 
   postCourseDetails() {
@@ -43,15 +43,12 @@ export class AddCourseComponent implements OnInit {
         console.log(res);
         alert('Course Added Successfully !!!');
         this.formValue.reset();
-        this.getAllCourses();
-      },
-      (err) => {
-        alert('something Went Wrong');
+        this.getAllCourseDetails();
       }
     );
   }
 
-  getAllCourses() {
+  getAllCourseDetails() {
     this.addCourseService.getAllCourses().subscribe((res) => {
       this.courseData = res;
     });

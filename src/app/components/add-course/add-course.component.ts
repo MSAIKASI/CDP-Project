@@ -27,7 +27,7 @@ export class AddCourseComponent implements OnInit {
       startDate: [''],
       endDate: [''],
     });
-    this.getAllCourseDetails();
+    
   }
 
   postCourseDetails() {

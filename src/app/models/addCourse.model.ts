@@ -1,10 +1,12 @@
 export class AddCourseModel{
-    id: number = 0;
+  id: number = 0;
+  trainingPlatform: string = "";
   courseName: string = '';
-  platform: string = '';
+  platformName: string = '';
   courseUrl: string = '';
-  noOfHours: number = 0;
+  learningHours: number = 0;
   startDate: string = '';
   endDate: string = '';
+  
   
 }

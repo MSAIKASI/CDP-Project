@@ -12,7 +12,8 @@ import { AddCourseService } from 'src/app/services/addCourse.service';
 export class AddCourseComponent implements OnInit {
   formValue!: FormGroup;
   addCourseModel: AddCourseModel = new AddCourseModel();
-  courseData! :any;
+  courseData!: any;
+ 
 
   constructor(
     private formbuilder: FormBuilder,
@@ -20,19 +21,22 @@ export class AddCourseComponent implements OnInit {
 
   ngOnInit(): void {
     this.formValue = this.formbuilder.group({
-      courseName: [''],
-      platform: [''],
+      trainingPlatform:[''],
+      courseName:[''],
+      platformName: [''],
       courseUrl: [''],
-      noOfHours: 0,
+      LearningHours: 0,
       startDate: [''],
       endDate: [''],
+      
     });
     this.getDate();
     this.formValue = new FormGroup({
+      trainingPlatform: new FormControl(null, Validators.required),
       courseName: new FormControl(null, Validators.required),
-      platform: new FormControl(null, Validators.required),
+      platformName: new FormControl(null, Validators.required),
       courseUrl: new FormControl(null, Validators.required),
-      noOfHours: new FormControl(null, Validators.required),
+      learningHours: new FormControl(null, Validators.required),
       startDate: new FormControl(null, Validators.required),
       endDate: new FormControl(null, Validators.required),
     });
@@ -40,12 +44,14 @@ export class AddCourseComponent implements OnInit {
   }
 
   postCourseDetails() {
+    this.addCourseModel.trainingPlatform = this.formValue.value.trainingPlatform;
     this.addCourseModel.courseName = this.formValue.value.courseName;
-    this.addCourseModel.platform = this.formValue.value.platform;
+    this.addCourseModel.platformName = this.formValue.value.platformName;
     this.addCourseModel.courseUrl = this.formValue.value.courseUrl;
-    this.addCourseModel.noOfHours = this.formValue.value.noOfHours;
+    this.addCourseModel.learningHours = this.formValue.value.learningHours;
     this.addCourseModel.startDate = this.formValue.value.startDate;
     this.addCourseModel.endDate = this.formValue.value.endDate;
+    
 
     this.addCourseService.addNewCourse(this.addCourseModel).subscribe(
       (res) => {
@@ -81,18 +87,28 @@ export class AddCourseComponent implements OnInit {
     console.log(this.minDate);
   }
 
+
+
+  //checkBox
+ 
+ 
+
+
 // Validators
+  get trainingPlatform() {
+    return this.formValue.get('trainingPlatform');
+  }
   get courseName() {
     return this.formValue.get('courseName');
   }
-  get platform() {
-    return this.formValue.get('platform');
+  get platformName() {
+    return this.formValue.get('platformName');
   }
   get courseUrl() {
     return this.formValue.get('courseUrl');
   }
-  get noOfHours() {
-    return this.formValue.get('noOfHours');
+  get learningHours() {
+    return this.formValue.get('learningHours');
   }
   get startDate() {
     return this.formValue.get('startDate');

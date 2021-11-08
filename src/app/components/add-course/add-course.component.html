@@ -1,6 +1,6 @@
-<div class="form-control container form-row"></div>
-<div class="form-control col-md-8">
-  <form [formGroup]="formValue">
+<div class="container form-control col-md-8 alert mt-3 alert-secondary">
+  <h2>Add Course</h2>
+  <form [formGroup]="formValue" class="needs-validation">
     <div class="form-row">
       <div class="form-group col-md-4">
         <label for="inputCourseName4">Course Name</label>
@@ -11,7 +11,13 @@
           placeholder="Enter Course Name"
           required
         />
+        <small
+          *ngIf="courseName?.invalid && courseName?.touched"
+          class="text-danger"
+          >Course Name is Required</small
+        >
       </div>
+
       <div class="form-group col-md-4">
         <label for="inputPlatform4">Platform</label>
         <input
@@ -21,6 +27,11 @@
           placeholder="Enter Platform"
           required
         />
+        <small
+          *ngIf="platform?.invalid && platform?.touched"
+          class="text-danger"
+          >Platform is Required</small
+        >
       </div>
 
       <div class="form-group col-md-4">
@@ -32,6 +43,11 @@
           placeholder="Enter Course Url"
           required
         />
+        <small
+          *ngIf="courseUrl?.invalid && courseUrl?.touched"
+          class="text-danger"
+          >Course URL is Required</small
+        >
       </div>
     </div>
 
@@ -39,37 +55,59 @@
       <div class="form-group col-md-4">
         <label for="inputNoOfHours4">No of Hours</label>
         <input
-          type="text"
+          type="number"
           class="form-control"
           formControlName="noOfHours"
           placeholder="Enter Hours"
           required
+          min="1"
         />
+        <small
+          *ngIf="noOfHours?.invalid && noOfHours?.touched"
+          class="text-danger"
+          >No of Hours is Required</small
+        >
       </div>
+
       <div class="form-group col-md-4">
         <label for="inputStartDate4">Start Date</label>
         <input
-          type="text"
+          type="date"
           class="form-control"
           formControlName="startDate"
           placeholder="Enter Start Date"
+          min="{{ minDate }}"
           required
         />
+        <small
+          *ngIf="startDate?.invalid && startDate?.touched"
+          class="text-danger"
+          >Start Date is Required</small
+        >
       </div>
 
       <div class="form-group col-md-4">
-        <label for="inputEndDrte4">End Date</label>
+        <label for="inputEndDate4">End Date</label>
         <input
-          type="text"
+          type="date"
           class="form-control"
           formControlName="endDate"
           placeholder="Enter End Date"
+          min="{{ minDate }}"
           required
         />
+        <small *ngIf="endDate?.invalid && endDate?.touched" class="text-danger"
+          >End Date is Required</small
+        >
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary" (click)="postCourseDetails()">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      (click)="postCourseDetails()"
+      [disabled]="formValue.invalid"
+    >
       Submit
     </button>
   </form>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  FormBuilder,FormGroup } from '@angular/forms';
+import {  FormBuilder,FormControl,FormGroup, Validators } from '@angular/forms';
 import { AddCourseModel } from 'src/app/models/addCourse.model';
 import { AddCourseService } from 'src/app/services/addCourse.service';
 
@@ -27,6 +27,15 @@ export class AddCourseComponent implements OnInit {
       startDate: [''],
       endDate: [''],
     });
+    this.getDate();
+    this.formValue = new FormGroup({
+      courseName: new FormControl(null, Validators.required),
+      platform: new FormControl(null, Validators.required),
+      courseUrl: new FormControl(null, Validators.required),
+      noOfHours: new FormControl(null, Validators.required),
+      startDate: new FormControl(null, Validators.required),
+      endDate: new FormControl(null, Validators.required),
+    });
     
   }
 
@@ -53,5 +62,44 @@ export class AddCourseComponent implements OnInit {
       this.courseData = res;
     });
   }
+ 
+  //Calender
+  minDate: any = "";
 
+  getDate() {
+    var date: any = new Date();
+    var toDate: any = date.getDate();
+    if(toDate<10){
+      toDate = '0' + toDate;
+    }
+    var month = date.getMonth() + 1;
+    if (month < 10) {
+      month = '0' + month;
+    }
+    var year = date.getFullYear();
+    this.minDate = year + "-" + month + "-" + toDate;
+    console.log(this.minDate);
+  }
+
+// Validators
+  get courseName() {
+    return this.formValue.get('courseName');
+  }
+  get platform() {
+    return this.formValue.get('platform');
+  }
+  get courseUrl() {
+    return this.formValue.get('courseUrl');
+  }
+  get noOfHours() {
+    return this.formValue.get('noOfHours');
+  }
+  get startDate() {
+    return this.formValue.get('startDate');
+  }
+  get endDate() {
+    return this.formValue.get('endDate');
+  }
+
+  
 }

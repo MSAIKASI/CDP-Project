@@ -125,13 +125,54 @@
       </div>
     </div>
 
-    <button
-      type="submit"
-      class="btn btn-primary"
-      (click)="postCourseDetails()"
-      [disabled]="formValue.invalid"
-    >
-      Submit
-    </button>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputCourseName4">Category</label>
+        <select
+          name="category"
+          class="form-control"
+          formControlName="category"
+          placeholder="Enter Category"
+        >
+          <option value="Mandatory">Mandatory</option>
+          <option value="Non-Mandatory">Non-Mandatory</option>
+        </select>
+        <small
+          *ngIf="category?.invalid && category?.touched"
+          class="text-danger"
+          >Category is Required</small
+        >
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="inputCourseName4">Training Type</label>
+        <select
+          name="trainingType"
+          class="form-control"
+          formControlName="trainingType"
+          placeholder="Enter Training Type"
+        >
+          <option value="Internal">Internal</option>
+          <option value="External">External</option>
+        </select>
+        <small
+          *ngIf="trainingType?.invalid && trainingType?.touched"
+          class="text-danger"
+          >Training Type is Required</small
+        >
+      </div>
+    </div>
+
+    <br />
+    <div class="d-flex justify-content-center">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        (click)="postCourseDetails()"
+        [disabled]="formValue.invalid"
+      >
+        Submit
+      </button>
+    </div>
   </form>
 </div>

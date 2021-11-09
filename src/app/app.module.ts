@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AddCourseComponent } from './components/add-course/add-course.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CourseListComponent } from './components/course-list/course-list.component';
 
 
 
@@ -14,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     AddCourseComponent,
+    CourseListComponent,
   ],
   imports: [
     BrowserModule,

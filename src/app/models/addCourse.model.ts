@@ -7,6 +7,8 @@ export class AddCourseModel{
   learningHours: number = 0;
   startDate: string = '';
   endDate: string = '';
+  category: string = '';
+  trainingType: string = '';
   
   
 }

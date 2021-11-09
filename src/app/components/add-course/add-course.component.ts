@@ -28,6 +28,8 @@ export class AddCourseComponent implements OnInit {
       LearningHours: 0,
       startDate: [''],
       endDate: [''],
+      category: [''],
+      trainingType: [''],
       
     });
     this.getDate();
@@ -39,6 +41,8 @@ export class AddCourseComponent implements OnInit {
       learningHours: new FormControl(null, Validators.required),
       startDate: new FormControl(null, Validators.required),
       endDate: new FormControl(null, Validators.required),
+      category: new FormControl(null, Validators.required),
+      trainingType: new FormControl(null, Validators.required),
     });
     
   }
@@ -51,7 +55,8 @@ export class AddCourseComponent implements OnInit {
     this.addCourseModel.learningHours = this.formValue.value.learningHours;
     this.addCourseModel.startDate = this.formValue.value.startDate;
     this.addCourseModel.endDate = this.formValue.value.endDate;
-    
+    this.addCourseModel.category = this.formValue.value.category;
+    this.addCourseModel.trainingType = this.formValue.value.trainingType;
 
     this.addCourseService.addNewCourse(this.addCourseModel).subscribe(
       (res) => {
@@ -115,6 +120,12 @@ export class AddCourseComponent implements OnInit {
   }
   get endDate() {
     return this.formValue.get('endDate');
+  }
+  get category() {
+    return this.formValue.get('category');
+  }
+  get trainingType() {
+    return this.formValue.get('trainingType');
   }
 
   

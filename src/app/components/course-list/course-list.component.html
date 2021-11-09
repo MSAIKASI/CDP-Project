@@ -1,0 +1,21 @@
+<h3>Course List</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Course Name</th>
+      <th>Platform</th>
+      <th>Hours</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let course of courses">
+      <td>{{ course.courseName }}</td>
+      <td>{{ course.platformName }}</td>
+      <td>{{ course.learningHours }}</td>
+      <td>{{ course.startDate }}</td>
+      <td>{{ course.endDate }}</td>
+    </tr>
+  </tbody>
+</table>

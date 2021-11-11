@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { AddCourseModel } from 'src/app/models/addCourse.model';
 import { AddCourseService } from 'src/app/services/addCourse.service';
 
@@ -8,13 +9,16 @@ import { AddCourseService } from 'src/app/services/addCourse.service';
   styleUrls: ['./course-list.component.css']
 })
 export class CourseListComponent implements OnInit {
-
+  searchText!:any ;
+  courseData: any;
  courses!: AddCourseModel[];
 
   constructor(private addCourseService:AddCourseService) { }
 
   ngOnInit(): void {
+   
     this.getCourses();
+    
   }
 
 
@@ -23,5 +27,12 @@ export class CourseListComponent implements OnInit {
       this.courses = res;
     })
   }
+
+  // getCoursesBySearch() {
+  //   this.addCourseService.getCourseByName(this.courseName).subscribe(res => {
+  //     this.courseData = res;
+  //   });
+  // }
+  
 
 }

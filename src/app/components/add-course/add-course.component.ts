@@ -35,7 +35,7 @@ export class AddCourseComponent implements OnInit {
     this.getDate();
     this.getAllCourseDetails() 
     this.formValue = new FormGroup({
-      trainingPlatform: new FormControl(null, Validators.required),
+      trainingPlatform: new FormControl('', Validators.required),
       courseName: new FormControl(null, Validators.required),
       platformName: new FormControl(null, Validators.required),
       courseUrl: new FormControl(null, Validators.required),
@@ -92,13 +92,7 @@ export class AddCourseComponent implements OnInit {
     this.minDate = year + "-" + month + "-" + toDate;
     console.log(this.minDate);
   }
-
-
-
-  //checkBox
  
- 
-
 
 // Validators
   get trainingPlatform() {

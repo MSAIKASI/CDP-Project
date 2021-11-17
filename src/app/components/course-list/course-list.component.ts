@@ -9,7 +9,7 @@ import { AddCourseService } from 'src/app/services/addCourse.service';
   styleUrls: ['./course-list.component.css']
 })
 export class CourseListComponent implements OnInit {
-  searchText!:any ;
+  searchText!:string ;
   courseData: any;
  courses!: AddCourseModel[];
 
@@ -33,6 +33,20 @@ export class CourseListComponent implements OnInit {
   //     this.courseData = res;
   //   });
   // }
+
+  search() {
+    if(this.searchText!=""){
+      this.courses = this.courses.filter(res => {
+        return (res.courseName.toLocaleLowerCase().match(this.searchText.toLocaleLowerCase()) ||res.platformName.toLocaleLowerCase().match(this.searchText.toLocaleLowerCase()))
+      });
+    
+    }else if (this.searchText == "") {
+      this.ngOnInit();
+      
+      } 
+  }
+
+  
   
 
 }

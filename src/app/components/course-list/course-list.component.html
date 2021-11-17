@@ -4,9 +4,10 @@
   <label for="search">Search</label>
   <input
     type="text"
-    class="form-control col-6"
-    name="search"
+    class="form-control col-4 alert alert-dark text-dark"
     [(ngModel)]="searchText"
+    (input)="search()"
+    placeholder="Search by Course Name"
   />
   <br />
 
@@ -21,7 +22,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let course of courses | filter: searchText">
+      <tr *ngFor="let course of courses">
         <td>{{ course.courseName }}</td>
         <td>{{ course.platformName }}</td>
         <td>{{ course.learningHours }}</td>

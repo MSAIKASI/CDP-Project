@@ -1,20 +1,19 @@
 import { Injectable } from "@angular/core";
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { AddCourseModel } from "../models/addCourse.model";
+import { CourseModel } from "../models/course.model";
 
 @Injectable({providedIn:'root'})
 export class AddCourseService {
-  addCourseModal: AddCourseModel = new AddCourseModel();
+  courseModel: CourseModel = new CourseModel();
   baseUrl = 'http://localhost:8080/api/addcourse';
   
 
   constructor(private httpClient: HttpClient) {}
 
   addNewCourse(data: any) {
-    return this.httpClient.post<any>(`${this.baseUrl}/create/${this.addCourseModal.userId}`, data).pipe(
+    return this.httpClient.post<any>(`${this.baseUrl}/create/${this.courseModel.userId}`, data).pipe(
       map((res: any) => {
         return res;
       })

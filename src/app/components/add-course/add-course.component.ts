@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  FormBuilder,FormControl,FormGroup, Validators } from '@angular/forms';
 import { AddCourseModel } from 'src/app/models/addCourse.model';
+import { CourseModel } from 'src/app/models/course.model';
 import { AddCourseService } from 'src/app/services/addCourse.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { AddCourseService } from 'src/app/services/addCourse.service';
 export class AddCourseComponent implements OnInit {
   formValue!: FormGroup;
   addCourseModel: AddCourseModel = new AddCourseModel();
+  courseModel: CourseModel = new CourseModel();
   courseData!: any;
  
 
@@ -54,10 +56,10 @@ export class AddCourseComponent implements OnInit {
     this.addCourseModel.platformName = this.formValue.value.platformName;
     this.addCourseModel.courseUrl = this.formValue.value.courseUrl;
     this.addCourseModel.learningHours = this.formValue.value.learningHours;
-    this.addCourseModel.startDate = this.formValue.value.startDate;
-    this.addCourseModel.endDate = this.formValue.value.endDate;
-    this.addCourseModel.category = this.formValue.value.category;
-    this.addCourseModel.trainingType = this.formValue.value.trainingType;
+    this.courseModel.startDate = this.formValue.value.startDate;
+    this.courseModel.endDate = this.formValue.value.endDate;
+    this.courseModel.category = this.formValue.value.category;
+    this.courseModel.trainingType = this.formValue.value.trainingType;
 
     this.addCourseService.addNewCourse(this.addCourseModel).subscribe(
       (res) => {

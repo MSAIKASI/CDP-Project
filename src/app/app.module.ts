@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { AddCourseComponent } from './components/add-course/add-course.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CourseListComponent } from './components/course-list/course-list.component';
+
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
@@ -14,7 +14,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
   declarations: [
     AppComponent,
     AddCourseComponent,
-    CourseListComponent,
+    
   ],
   imports: [
     BrowserModule,

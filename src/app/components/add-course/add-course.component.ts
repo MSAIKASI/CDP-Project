@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {  FormBuilder,FormControl,FormGroup, Validators } from '@angular/forms';
-import { AddCourseModel } from 'src/app/models/addCourse.model';
 import { CourseModel } from 'src/app/models/course.model';
-import { AddCourseService } from 'src/app/services/addCourse.service';
+import { CourseAssignmentModel } from 'src/app/models/courseAssignment.model';
+import { AddCourseService } from 'src/app/services/courseAssignment.service';
 
 @Component({
   selector: 'app-add-course',
@@ -12,8 +12,8 @@ import { AddCourseService } from 'src/app/services/addCourse.service';
 })
 export class AddCourseComponent implements OnInit {
   formValue!: FormGroup;
-  addCourseModel: AddCourseModel = new AddCourseModel();
-  courseModel: CourseModel = new CourseModel();
+  addCourseModel: CourseModel = new CourseModel();
+  //courseAssignmentModel: CourseAssignmentModel = new CourseAssignmentModel();
   courseData!: any;
  
 
@@ -35,9 +35,9 @@ export class AddCourseComponent implements OnInit {
       
     });
     this.getDate();
-    this.getAllCourseDetails() 
+    // this.getAllCourseDetails() 
     this.formValue = new FormGroup({
-      trainingPlatform: new FormControl('', Validators.required),
+      trainingPlatform: new FormControl(null, Validators.required),
       courseName: new FormControl(null, Validators.required),
       platformName: new FormControl(null, Validators.required),
       courseUrl: new FormControl(null, Validators.required),
@@ -56,26 +56,27 @@ export class AddCourseComponent implements OnInit {
     this.addCourseModel.platformName = this.formValue.value.platformName;
     this.addCourseModel.courseUrl = this.formValue.value.courseUrl;
     this.addCourseModel.learningHours = this.formValue.value.learningHours;
-    this.courseModel.startDate = this.formValue.value.startDate;
-    this.courseModel.endDate = this.formValue.value.endDate;
-    this.courseModel.category = this.formValue.value.category;
-    this.courseModel.trainingType = this.formValue.value.trainingType;
-
-    this.addCourseService.addNewCourse(this.addCourseModel).subscribe(
-      (res) => {
-        console.log(res);
-        alert('Course Added Successfully !!!');
-        this.formValue.reset();
-        this.getAllCourseDetails();
-      }
-    );
+    this.addCourseModel. courseAssignment.startDate = this.formValue.value.startDate;
+    this.addCourseModel. courseAssignment.endDate = this.formValue.value.endDate;
+    this.addCourseModel. courseAssignment.category = this.formValue.value.category;
+    this.addCourseModel. courseAssignment.trainingType = this.formValue.value.trainingType;
+    
+      this.addCourseService.addNewCourse1(this.addCourseModel).subscribe(
+        (res) => {
+          console.log(res);
+          alert('Course Added Successfully !!!');
+          this.formValue.reset();
+          // this.getAllCourseDetails();
+        }
+      );
+   
   }
 
-  getAllCourseDetails() {
-    this.addCourseService.getAllCourses().subscribe((res) => {
-      this.courseData = res;
-    });
-  }
+  // getAllCourseDetails() {
+  //   this.addCourseService.getAllCourses().subscribe((res) => {
+  //     this.courseData = res;
+  //   });
+  // }
  
   //Calender
   minDate: any = "";

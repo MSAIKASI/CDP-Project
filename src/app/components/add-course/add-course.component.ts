@@ -33,7 +33,7 @@ export class AddCourseComponent implements OnInit {
       
     });
     this.getDate();
-    // this.getAllCourseDetails() 
+    this.getAllCourseDetails() 
     this.formValue = new FormGroup({
       trainingPlatform: new FormControl('', Validators.required),
       courseName: new FormControl(null, Validators.required),
@@ -64,16 +64,16 @@ export class AddCourseComponent implements OnInit {
         console.log(res);
         alert('Course Added Successfully !!!');
         this.formValue.reset();
-        // this.getAllCourseDetails();
+        this.getAllCourseDetails();
       }
     );
   }
 
-  // getAllCourseDetails() {
-  //   this.addCourseService.getAllCourses().subscribe((res) => {
-  //     this.courseData = res;
-  //   });
-  // }
+  getAllCourseDetails() {
+    this.addCourseService.getAllCourses().subscribe((res) => {
+      this.courseData = res;
+    });
+  }
  
   //Calender
   minDate: any = "";

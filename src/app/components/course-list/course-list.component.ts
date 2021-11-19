@@ -17,16 +17,16 @@ export class CourseListComponent implements OnInit {
 
   ngOnInit(): void {
    
-    this.getCourses();
+    // this.getCourses();
     
   }
 
 
-  private getCourses() {
-    this.addCourseService.getAllCourses().subscribe(res => {
-      this.courses = res;
-    })
-  }
+  // private getCourses() {
+  //   this.addCourseService.getAllCourses().subscribe(res => {
+  //     this.courses = res;
+  //   })
+  // }
 
   // getCoursesBySearch() {
   //   this.addCourseService.getCourseByName(this.courseName).subscribe(res => {

@@ -1,0 +1,33 @@
+{
+  "addCourse": [
+    {
+      "id": 1
+    },
+    {
+      "trainingPlatform": "coursera",
+      "courseName": "python fundamentals",
+      "platformName": "python",
+      "courseUrl": "bnmxhgh/suiudhj/d",
+      "learningHours": 1,
+      "startDate": "743878",
+      "endDate": "683767",
+      "category": "jhjhd",
+      "trainingType": "hdkjazh",
+      "userId": "roshan",
+      "id": 2
+    },
+    {
+      "userId": 4200,
+      "trainingPlatform": "5654",
+      "courseName": "4353",
+      "platformName": "34we",
+      "courseUrl": "erwe",
+      "learningHours": 3,
+      "startDate": "2021-11-20",
+      "endDate": "2021-11-28",
+      "category": "Mandatory",
+      "trainingType": "External",
+      "id": 3
+    }
+  ]
+}

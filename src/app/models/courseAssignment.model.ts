@@ -1,12 +1,10 @@
 export class CourseAssignmentModel {
-  assignmentId!: number;
-    courseId!: number ;
-    userId: string = "kasim";
+    assignmentId!: number;
     startDate!: string;
     endDate!: string;
     category!: string;
-  trainingType!: string;
-  
-
+    trainingType!: string;
+    userId: string = "kasim";
+    
 
   }

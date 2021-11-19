@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  FormBuilder,FormControl,FormGroup, Validators } from '@angular/forms';
-import { CourseModel } from 'src/app/models/course.model';
-import { CourseAssignmentModel } from 'src/app/models/courseAssignment.model';
+import { CourseModel,Course } from 'src/app/models/course.model';
 import { AddCourseService } from 'src/app/services/courseAssignment.service';
 
 @Component({
@@ -12,8 +11,7 @@ import { AddCourseService } from 'src/app/services/courseAssignment.service';
 })
 export class AddCourseComponent implements OnInit {
   formValue!: FormGroup;
-  courseModel: CourseModel = new CourseModel();
-  //courseAssignment: CourseAssignmentModel = new CourseAssignmentModel();
+  courseModel: CourseModel=new CourseModel();
   courseData!: any;
  
 
@@ -52,18 +50,16 @@ export class AddCourseComponent implements OnInit {
   }
 
   postCourseDetails() {
-    this.courseModel.trainingPlatform = this.formValue.value.trainingPlatform;
-    this.courseModel.courseName = this.formValue.value.courseName;
-    this.courseModel.platformName = this.formValue.value.platformName;
-    this.courseModel.courseUrl = this.formValue.value.courseUrl;
-    this.courseModel.learningHours = this.formValue.value.learningHours;
-    this.courseModel. courseAssignment.startDate = this.formValue.value.startDate;
-    this.courseModel. courseAssignment.endDate = this.formValue.value.endDate;
-    this.courseModel. courseAssignment.category = this.formValue.value.category;
+    this.courseModel.courseAssignment.startDate =this.formValue.value.startDate;
+    this.courseModel.courseAssignment.endDate = this.formValue.value.endDate;
+    this.courseModel.courseAssignment.category = this.formValue.value.category;
     this.courseModel.courseAssignment.trainingType = this.formValue.value.trainingType;
-
-    
-      this.addCourseService.addNewCourse(this.courseModel).subscribe(
+    this.courseModel.course.courseName = this.formValue.value.courseName;
+    this.courseModel.course.trainingPlatform = this.formValue.value.trainingPlatform;
+    this.courseModel.course.platformName = this.formValue.value.platformName;
+    this.courseModel.course.courseUrl = this.formValue.value.courseUrl;
+    this.courseModel.course.learningHours = this.formValue.value.learningHours;
+    this.addCourseService.addNewCourse2(this.courseModel).subscribe(
         (res) => {
           console.log(res);
           alert('Course Added Successfully !!!');

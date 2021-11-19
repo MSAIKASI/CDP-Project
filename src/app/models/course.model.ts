@@ -1,21 +1,29 @@
 import { CourseAssignmentModel } from "./courseAssignment.model";
 
-export class CourseModel {
-  CourseId!: number;
-  trainingPlatform!: string;
-  courseName!: string;
-  platformName!: string;
-  courseUrl!: string;
-  learningHours!: number;
+export class  CourseModel  {
+  
   courseAssignment: CourseAssignmentModel = {
-    assignmentId: 0,
     startDate: "",
     endDate: "",
     category: "",
     trainingType: "",
-    userId: "kasim",
-    
+    userId: "kasim"
   };
-  
+  course: Course = {
+    trainingPlatform: "" ,
+  courseName: "" ,
+  platformName: "" ,
+  courseUrl:"" ,
+  learningHours: 0
+    
+  }
 
+}
+export interface Course {
+  courseId?: number;
+  trainingPlatform: string ;
+  courseName: string;
+  platformName: string;
+  courseUrl: string;
+  learningHours: number;
 }

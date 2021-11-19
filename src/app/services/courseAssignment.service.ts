@@ -8,14 +8,15 @@ import { CourseModel } from "../models/course.model";
 @Injectable({providedIn:'root'})
 export class AddCourseService {
    courseAssignment: CourseAssignmentModel = new CourseAssignmentModel();
-   courseModel: CourseModel = new CourseModel();
-  baseUrl = 'http://localhost:8080/api/addassignment/';
+   courseModel: CourseModel;
+  baseUrl = 'http://localhost:8080/api/addassignment';
 
   baseUrl2 = 'http://localhost:8080/api/course/';
 
   constructor(private httpClient: HttpClient) {}
 
-  addNewCourse1(courseModel:CourseModel):Observable<Object> {
+  addNewCourse1(courseModel: CourseModel): Observable<Object> {
+
     return this.httpClient.post(`${this.baseUrl}/create1/${this.courseAssignment.userId}`, courseModel).pipe(
       map((res: any) => {
         return res;
@@ -59,9 +60,9 @@ export class AddCourseService {
   //   );
   // }
 
-  // getCourseByName(courseName:string) {
-  //   return this.httpClient.get<any>(`${this.baseUrl}?courseName:${courseName}`);
-  // }
+  getCourseByName(id:number) {
+    return this.httpClient.get<any>(`${this.baseUrl2}/find/${id}`);
+  }
 
 
 

@@ -1,12 +1,21 @@
 import { CourseAssignmentModel } from "./courseAssignment.model";
 
 export class CourseModel {
-  assignmentId!: number;
+  CourseId!: number;
   trainingPlatform!: string;
   courseName!: string;
   platformName!: string;
   courseUrl!: string;
   learningHours!: number;
-  courseAssignment: CourseAssignmentModel=new CourseAssignmentModel();
+  courseAssignment: CourseAssignmentModel = {
+    assignmentId: 0,
+    startDate: "",
+    endDate: "",
+    category: "",
+    trainingType: "",
+    userId: "kasim",
+    
+  };
+  
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Course, CourseModel } from 'src/app/models/course.model';
 import { AddCourseService } from 'src/app/services/courseAssignment.service';
 
@@ -22,7 +23,7 @@ export class CourseListComponent implements OnInit {
 
   constructor(
     private formbuilder: FormBuilder,
-    private addCourseService: AddCourseService) { }
+    private addCourseService: AddCourseService, private router: Router) { }
 
   ngOnInit(): void {
     this.formValue = this.formbuilder.group({
@@ -156,6 +157,10 @@ export class CourseListComponent implements OnInit {
       this.ngOnInit();
       
       } 
+  }
+
+  goToAddCourse() {
+    this.router.navigate(['/addcourse']);
   }
 
 }

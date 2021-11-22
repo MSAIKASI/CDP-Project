@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CourseListComponent } from './components/course-list/course-list.component';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -24,7 +25,8 @@ import { CourseListComponent } from './components/course-list/course-list.compon
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    CommonModule
     
    
   ],

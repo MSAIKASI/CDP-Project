@@ -52,13 +52,13 @@ export class AddCourseService {
   //   return this.httpClient.get<any>(`${this.baseUrl}/${this.courseAssignmentModel.courseId}`);
   // }
   
-  // getAllCourses() {
-  //   return this.httpClient.get<any>( `${this.baseUrl}/findallcourses`).pipe(
-  //     map((res: any) => {
-  //       return res;
-  //     })
-  //   );
-  // }
+  getAllCourses() {
+    return this.httpClient.get<any>( `${this.baseUrl2}/findallcourses`).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
 
   getCourseByName(id:number) {
     return this.httpClient.get<any>(`${this.baseUrl2}/find/${id}`);

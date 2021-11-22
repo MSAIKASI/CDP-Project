@@ -1,0 +1,32 @@
+{ 
+      "course":{
+          "courseId":1,
+        "trainingPlatform":"coursera",
+        "courseName":"python fundamentals",
+        "platformName":"java",
+        "courseUrl":"bnmxhgh/suiudhj/d",
+        "learningHours":1
+      },
+        "courseAssignment": {
+            "startDate":"743878",
+            "endDate":"683767",
+            "category":"mandatory",
+            "trainingType":"hdkjazh",
+            "userId": "kasim"
+             
+        }
+    
+        
+    courseAssignment:
+assignmentId: 0
+category: "Mandatory"
+endDate: "2021-11-21"
+startDate: "2021-11-19"
+trainingType: "Internal"
+userId: "kasim"
+[[Prototype]]: Object
+courseName: "qweqw"
+courseUrl: "erewr"
+learningHours: 1
+platformName: "werwe"
+trainingPlatform: "qwe"

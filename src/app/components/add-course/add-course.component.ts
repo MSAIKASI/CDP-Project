@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  FormBuilder,FormControl,FormGroup, Validators } from '@angular/forms';
 import { CourseModel,Course } from 'src/app/models/course.model';
-import { AddCourseService } from 'src/app/services/courseAssignment.service';
+import { AddCourseService } from 'src/app/services/addCourse.service';
 
 @Component({
   selector: 'app-add-course',
@@ -33,7 +33,6 @@ export class AddCourseComponent implements OnInit {
       
     });
     this.getDate();
-    // this.getAllCourseDetails() 
     this.formValue = new FormGroup({
       trainingPlatform: new FormControl(null, Validators.required),
       courseName: new FormControl(null, Validators.required),
@@ -70,11 +69,6 @@ export class AddCourseComponent implements OnInit {
    
   }
 
-  // getAllCourseDetails() {
-  //   this.addCourseService.getAllCourses().subscribe((res) => {
-  //     this.courseData = res;
-  //   });
-  // }
  
   //Calender
   minDate: any = "";

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Course, CourseModel } from 'src/app/models/course.model';
-import { AddCourseService } from 'src/app/services/courseAssignment.service';
+import { AddCourseService } from 'src/app/services/addCourse.service';
 
 
 
@@ -38,21 +38,19 @@ export class CourseListComponent implements OnInit {
       trainingType: [''], 
       
     });
-    this.getDate();
-    this.getCourses();
-    // this.getAllCourseDetails() 
-    // this.formValue = new FormGroup({
-    //   trainingPlatform: new FormControl(null, Validators.required),
-    //   courseName: new FormControl(null, Validators.required),
-    //   platformName: new FormControl(null, Validators.required),
-    //   courseUrl: new FormControl(null, Validators.required),
-    //   learningHours: new FormControl(null, Validators.required),
-    //   startDate: new FormControl(null, Validators.required),
-    //   endDate: new FormControl(null, Validators.required),
-    //   category: new FormControl(null, Validators.required),
-    //   trainingType: new FormControl(null, Validators.required),
+    this.getCourses(); 
+    this.formValue = new FormGroup({
+      trainingPlatform: new FormControl(null, Validators.required),
+      courseName: new FormControl(null, Validators.required),
+      platformName: new FormControl(null, Validators.required),
+      courseUrl: new FormControl(null, Validators.required),
+      learningHours: new FormControl(null, Validators.required),
+      startDate: new FormControl(null, Validators.required),
+      endDate: new FormControl(null, Validators.required),
+      category: new FormControl(null, Validators.required),
+      trainingType: new FormControl(null, Validators.required),
     
-    // });
+    });
     
   }
 
@@ -86,11 +84,7 @@ export class CourseListComponent implements OnInit {
     this.formValue.controls['learningHours'].setValue(row.learningHours);
   }
 
-  // getAllCourseDetails() {
-  //   this.addCourseService.getAllCourses().subscribe((res) => {
-  //     this.courseData = res;
-  //   });
-  // }
+  
 
    getCourses() {
     this.addCourseService.getAllCourses().subscribe(res => {

@@ -15,14 +15,14 @@ export class AddCourseService {
 
   constructor(private httpClient: HttpClient) {}
 
-  addNewCourse1(courseModel: CourseModel): Observable<Object> {
+  // addNewCourse1(courseModel: CourseModel): Observable<Object> {
 
-    return this.httpClient.post(`${this.baseUrl}/create1/${this.courseAssignment.userId}`, courseModel).pipe(
-      map((res: any) => {
-        return res;
-      })
-    );
-  }
+  //   return this.httpClient.post(`${this.baseUrl}/create1/${this.courseAssignment.userId}`, courseModel).pipe(
+  //     map((res: any) => {
+  //       return res;
+  //     })
+  //   );
+  // }
 
   addNewCourse2(courseModel:CourseModel):Observable<Object> {
     return this.httpClient.post(`${this.baseUrl}/create2/${this.courseAssignment.userId}`, courseModel).pipe(

@@ -4,7 +4,7 @@ import { AddCourseComponent } from './components/add-course/add-course.component
 import { CourseListComponent } from './components/course-list/course-list.component';
 
 const routes: Routes = [
-  { path: '', component: AddCourseComponent },
+  { path: '', component: CourseListComponent },
   { path: 'addcourse', component: AddCourseComponent },
   { path: 'courseList', component: CourseListComponent },
 ];

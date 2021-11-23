@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { AddCourseService } from "./courseAssignment.service";
+import { AddCourseService } from "./addCourse.service";
 
 describe('AddCourseComponent', () => {
     let addCourseService: AddCourseService;

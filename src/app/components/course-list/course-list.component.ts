@@ -5,7 +5,6 @@ import { Course, CourseModel } from 'src/app/models/course.model';
 import { AddCourseService } from 'src/app/services/addCourse.service';
 
 
-
 @Component({
   selector: 'app-course-list',
   templateUrl: './course-list.component.html',
@@ -13,13 +12,15 @@ import { AddCourseService } from 'src/app/services/addCourse.service';
 })
 export class CourseListComponent implements OnInit {
   searchText!:string ;
-  courseData: any;
   courses!: Course[];
+
+  disabledValue = false;
+  
   
   formValue!: FormGroup;
   courseModel: CourseModel = new CourseModel();
   
-  // courseData!: any;
+
 
   constructor(
     private formbuilder: FormBuilder,
@@ -38,7 +39,7 @@ export class CourseListComponent implements OnInit {
       trainingType: [''], 
       
     });
-    this.getCourses(); 
+    this.getCourses();
     this.formValue = new FormGroup({
       trainingPlatform: new FormControl(null, Validators.required),
       courseName: new FormControl(null, Validators.required),
@@ -69,10 +70,8 @@ export class CourseListComponent implements OnInit {
           console.log(res);
           alert('Course Added Successfully !!!');
           this.formValue.reset();
-          // this.getAllCourseDetails();
         }
-      );
-   
+      );  
   }
 
   onEdit(row: any) {
@@ -82,6 +81,8 @@ export class CourseListComponent implements OnInit {
     this.formValue.controls['platformName'].setValue(row.platformName);
     this.formValue.controls['courseUrl'].setValue(row.courseUrl);
     this.formValue.controls['learningHours'].setValue(row.learningHours);
+    this.disabledValue = true;
+
   }
 
   
@@ -157,4 +158,15 @@ export class CourseListComponent implements OnInit {
     this.router.navigate(['/addcourse']);
   }
 
+  goToCourseList() {
+    
+    this.formValue.reset();
+    this.disabledValue = false;
+  }
+
+  resetForm() {
+    this.formValue.reset();
+    this.disabledValue = false;
+    
+  }
 }

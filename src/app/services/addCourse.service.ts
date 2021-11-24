@@ -16,7 +16,6 @@ export class AddCourseService {
   constructor(private httpClient: HttpClient) {}
 
   // addNewCourse1(courseModel: CourseModel): Observable<Object> {
-
   //   return this.httpClient.post(`${this.baseUrl}/create1/${this.courseAssignment.userId}`, courseModel).pipe(
   //     map((res: any) => {
   //       return res;
@@ -25,7 +24,7 @@ export class AddCourseService {
   // }
 
   addNewCourse2(courseModel:CourseModel):Observable<Object> {
-    return this.httpClient.post(`${this.baseUrl}/create2/${this.courseAssignment.userId}`, courseModel).pipe(
+    return this.httpClient.post(`${this.baseUrl}/create/${this.courseAssignment.userId}`, courseModel).pipe(
       map((res: any) => {
         return res;
       })

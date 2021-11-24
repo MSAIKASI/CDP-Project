@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  FormBuilder,FormControl,FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CourseModel,Course } from 'src/app/models/course.model';
 import { AddCourseService } from 'src/app/services/addCourse.service';
 
@@ -17,7 +18,7 @@ export class AddCourseComponent implements OnInit {
 
   constructor(
     private formbuilder: FormBuilder,
-    private addCourseService: AddCourseService) { }
+    private addCourseService: AddCourseService, private router: Router) { }
 
   ngOnInit(): void {
     this.formValue = this.formbuilder.group({
@@ -63,10 +64,8 @@ export class AddCourseComponent implements OnInit {
           console.log(res);
           alert('Course Added Successfully !!!');
           this.formValue.reset();
-          // this.getAllCourseDetails();
         }
-      );
-   
+      );  
   }
 
  
@@ -119,6 +118,9 @@ export class AddCourseComponent implements OnInit {
   }
 
  
-
+  goToCourseList() {
+    this.router.navigate(['/courseList']);
+    this.formValue.reset();
+  }
   
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Course, CourseModel } from 'src/app/models/course.model';
+import { CourseAssignmentModel } from 'src/app/models/courseAssignment.model';
 import { AddCourseService } from 'src/app/services/addCourse.service';
 
 
@@ -14,11 +15,10 @@ export class CourseListComponent implements OnInit {
   searchText:string ;
   courses: Course[];
   disabledValue = false;
-  
-  
-  
   formValue: FormGroup;
-  courseModel: CourseModel = new CourseModel();
+  courseModel: CourseModel=new CourseModel();
+ 
+  
   
 
 
@@ -57,7 +57,7 @@ export class CourseListComponent implements OnInit {
   }
 
   postCourseDetails() {
-    this.courseModel.courseAssignment.startDate = this.formValue.value.startDate;
+    this.courseModel.courseAssignment.startDate= this.formValue.value.startDate;
     this.courseModel.courseAssignment.endDate = this.formValue.value.endDate;
     this.courseModel.courseAssignment.category = this.formValue.value.category;
     this.courseModel.courseAssignment.trainingType = this.formValue.value.trainingType;
@@ -67,7 +67,7 @@ export class CourseListComponent implements OnInit {
     this.courseModel.course.courseUrl = this.formValue.value.courseUrl;
     this.courseModel.course.learningHours = this.formValue.value.learningHours;
   
-      this.addCourseService.addNewCourse(this.courseModel).subscribe(
+      this.addCourseService.addCourse(this.courseModel).subscribe(
         (res) => {
           console.log(res);
           alert('Course Added Successfully !!!');
@@ -80,7 +80,7 @@ export class CourseListComponent implements OnInit {
   }
 
   postAssignmentDetails() {
-    this.courseModel.courseAssignment.startDate =this.formValue.value.startDate;
+    this.courseModel.courseAssignment.startDate= this.formValue.value.startDate;
     this.courseModel.courseAssignment.endDate = this.formValue.value.endDate;
     this.courseModel.courseAssignment.category = this.formValue.value.category;
     this.courseModel.courseAssignment.trainingType = this.formValue.value.trainingType;
@@ -89,18 +89,21 @@ export class CourseListComponent implements OnInit {
     this.courseModel.course.platformName = this.formValue.value.platformName;
     this.courseModel.course.courseUrl = this.formValue.value.courseUrl;
     this.courseModel.course.learningHours = this.formValue.value.learningHours;
-    this.addCourseService.addNewAssignment(this.courseModel).subscribe(
+  
+      this.addCourseService.addCourse(this.courseModel).subscribe(
         (res) => {
           console.log(res);
           alert('Course Added Successfully !!!');
-        this.formValue.reset();
+          this.formValue.reset();
         
         }
-      );  
+      );
+      
+    
   }
 
   onEdit(row: any) {
-    this.courseModel.course.courseId = row.courseId;
+    this.courseModel.courseId = row.courseId;
     this.formValue.controls['trainingPlatform'].setValue(row.trainingPlatform);
     this.formValue.controls['courseName'].setValue(row.courseName);
     this.formValue.controls['platformName'].setValue(row.platformName);

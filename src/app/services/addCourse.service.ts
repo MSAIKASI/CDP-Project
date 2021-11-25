@@ -15,16 +15,8 @@ export class AddCourseService {
 
   constructor(private httpClient: HttpClient) {}
 
-  // addNewCourse1(courseModel: CourseModel): Observable<Object> {
-  //   return this.httpClient.post(`${this.baseUrl}/create1/${this.courseAssignment.userId}`, courseModel).pipe(
-  //     map((res: any) => {
-  //       return res;
-  //     })
-  //   );
-  // }
-
-  addNewCourse2(courseModel:CourseModel):Observable<Object> {
-    return this.httpClient.post(`${this.baseUrl}/create/${this.courseAssignment.userId}`, courseModel).pipe(
+  addNewAssignment(courseModel: CourseModel): Observable<Object> {
+    return this.httpClient.post(`${this.baseUrl}/createassignment/${this.courseAssignment.userId}`, courseModel).pipe(
       map((res: any) => {
         return res;
       })
@@ -38,6 +30,7 @@ export class AddCourseService {
       })
     );
   }
+
 
   createCourse(courseModel: CourseModel) :Observable<Object>{
     return this.httpClient.post(`${this.baseUrl2}/create/`,courseModel).pipe(

@@ -3,8 +3,8 @@ import { CourseAssignmentModel } from "./courseAssignment.model";
 export class  CourseModel  {
   
   courseAssignment: CourseAssignmentModel = {
-    startDate: "",
-    endDate: "",
+    startDate: new Date(0),
+    endDate: new Date(0),
     category: "",
     trainingType: "",
     userId: "kasim"

@@ -11,9 +11,8 @@ import { AddCourseService } from 'src/app/services/addCourse.service';
   providers: [AddCourseService],
 })
 export class AddCourseComponent implements OnInit {
-  formValue!: FormGroup;
+  formValue: FormGroup;
   courseModel: CourseModel=new CourseModel();
-  courseData!: any;
  
 
   constructor(
@@ -59,7 +58,7 @@ export class AddCourseComponent implements OnInit {
     this.courseModel.course.platformName = this.formValue.value.platformName;
     this.courseModel.course.courseUrl = this.formValue.value.courseUrl;
     this.courseModel.course.learningHours = this.formValue.value.learningHours;
-    this.addCourseService.addNewCourse2(this.courseModel).subscribe(
+    this.addCourseService.addNewCourse(this.courseModel).subscribe(
         (res) => {
           console.log(res);
           alert('Course Added Successfully !!!');

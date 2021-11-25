@@ -7,7 +7,7 @@ export class  CourseModel  {
     endDate: new Date(0),
     category: "",
     trainingType: "",
-    userId: "kasim"
+    
   };
   course: Course = {
     trainingPlatform: "" ,

@@ -24,7 +24,9 @@ export class CourseListComponent implements OnInit {
 
   constructor(
     private formbuilder: FormBuilder,
-    private addCourseService: AddCourseService, private router: Router) { }
+    private addCourseService: AddCourseService, private router: Router) {
+    
+    }
 
   ngOnInit(): void {
     this.formValue = this.formbuilder.group({
@@ -41,6 +43,7 @@ export class CourseListComponent implements OnInit {
     });
     this.getCourses();
     this.getDate();
+    
     this.formValue = new FormGroup({
       trainingPlatform: new FormControl(null, Validators.required),
       courseName: new FormControl(null, Validators.required),
@@ -67,16 +70,19 @@ export class CourseListComponent implements OnInit {
     this.courseModel.course.courseUrl = this.formValue.value.courseUrl;
     this.courseModel.course.learningHours = this.formValue.value.learningHours;
   
-      this.addCourseService.addNewCourse(this.courseModel).subscribe(
-        (res) => {
-          console.log(res);
-          alert('Course Added Successfully !!!');
-          this.formValue.reset();
-        
-        }
-      );
+    let findUrl = this.courses.filter(course => course.courseUrl == this.formValue.value.courseUrl);
+    if (findUrl.length >0) {
+      alert("This course is already existing "); 
+      return;
+    }
+    this.addCourseService.addNewCourse(this.courseModel).subscribe(
+      (res) => {
+        console.log(res);
+        alert('Course Added Successfully !!!');
+        this.formValue.reset();
+      }
+    );
       
-    
   }
 
   postAssignmentDetails() {
@@ -117,6 +123,9 @@ export class CourseListComponent implements OnInit {
       this.courses = res;
     })
   }
+  hello() {
+    this
+  }
  
   //Calender
   minDate: any = "";
@@ -135,6 +144,23 @@ export class CourseListComponent implements OnInit {
     this.minDate = year + "-" + month + "-" + toDate;
     console.log(this.minDate);
   }
+
+  // minDate2: any = "";
+
+  // getDate2() {
+  //   var date: any = this.formValue.value.startDate;
+  //   var toDate: any = date.getDate2();
+  //   if(toDate<10){
+  //     toDate = '0' + toDate;
+  //   }
+  //   var month = date.getMonth() + 1;
+  //   if (month < 10) {
+  //     month = '0' + month;
+  //   }
+  //   var year = date.getFullYear();
+  //   this.minDate2 = year + "-" + month + "-" + toDate;
+  //   console.log(this.minDate2);
+  // }
  
 
 // Validators

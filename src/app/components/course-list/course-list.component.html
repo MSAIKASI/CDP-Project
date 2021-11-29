@@ -301,7 +301,7 @@
         <form [formGroup]="formValue" class="needs-validation">
           <div class="form-row">
             <div class="form-group col-md-4">
-              <label for="inputCourseName4">Training Platform</label>
+              <label for="inputCourseName4">Training Platform *</label>
               <input
                 type="text"
                 class="form-control"
@@ -397,7 +397,6 @@
                 class="form-control"
                 formControlName="startDate"
                 placeholder="Enter Start Date"
-                min="{{ minDate }}"
                 required
               />
               <small

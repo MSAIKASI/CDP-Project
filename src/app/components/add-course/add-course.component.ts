@@ -11,13 +11,22 @@ import { AddCourseService } from 'src/app/services/addCourse.service';
   providers: [AddCourseService],
 })
 export class AddCourseComponent implements OnInit {
+  searchText:string ;
+  courses: Course[];
+  disabledValue = false;
+  
+  
+  
   formValue: FormGroup;
-  courseModel: CourseModel=new CourseModel();
- 
+  courseModel: CourseModel = new CourseModel();
+  
+
 
   constructor(
     private formbuilder: FormBuilder,
-    private addCourseService: AddCourseService, private router: Router) { }
+    private addCourseService: AddCourseService, private router: Router) {
+    
+    }
 
   ngOnInit(): void {
     this.formValue = this.formbuilder.group({
@@ -32,7 +41,9 @@ export class AddCourseComponent implements OnInit {
       trainingType: [''], 
       
     });
+    this.getCourses();
     this.getDate();
+    
     this.formValue = new FormGroup({
       trainingPlatform: new FormControl(null, Validators.required),
       courseName: new FormControl(null, Validators.required),
@@ -49,6 +60,33 @@ export class AddCourseComponent implements OnInit {
   }
 
   postCourseDetails() {
+    this.courseModel.courseAssignment.startDate = this.formValue.value.startDate;
+    this.courseModel.courseAssignment.endDate = this.formValue.value.endDate;
+    this.courseModel.courseAssignment.category = this.formValue.value.category;
+    this.courseModel.courseAssignment.trainingType = this.formValue.value.trainingType;
+    this.courseModel.course.courseName = this.formValue.value.courseName;
+    this.courseModel.course.trainingPlatform = this.formValue.value.trainingPlatform;
+    this.courseModel.course.platformName = this.formValue.value.platformName;
+    this.courseModel.course.courseUrl = this.formValue.value.courseUrl;
+    this.courseModel.course.learningHours = this.formValue.value.learningHours;
+  
+    let findUrl = this.courses.filter(course => course.courseUrl == this.formValue.value.courseUrl);
+    if (findUrl.length >0) {
+      alert("This course is already existing "); 
+      return;
+    }
+    this.addCourseService.addNewCourse(this.courseModel).subscribe(
+      (res) => {
+        console.log(res);
+        alert('Course Added Successfully !!!');
+        this.formValue.reset();
+        this.getCourses()
+      }
+    );
+      
+  }
+
+  postAssignmentDetails() {
     this.courseModel.courseAssignment.startDate =this.formValue.value.startDate;
     this.courseModel.courseAssignment.endDate = this.formValue.value.endDate;
     this.courseModel.courseAssignment.category = this.formValue.value.category;
@@ -58,15 +96,37 @@ export class AddCourseComponent implements OnInit {
     this.courseModel.course.platformName = this.formValue.value.platformName;
     this.courseModel.course.courseUrl = this.formValue.value.courseUrl;
     this.courseModel.course.learningHours = this.formValue.value.learningHours;
-    this.addCourseService.addNewCourse(this.courseModel).subscribe(
+    this.addCourseService.addNewAssignment(this.courseModel).subscribe(
         (res) => {
           console.log(res);
           alert('Course Added Successfully !!!');
-          this.formValue.reset();
+        this.formValue.reset();
+        
         }
       );  
   }
 
+  onEdit(row: any) {
+    this.courseModel.course.courseId = row.courseId;
+    this.formValue.controls['trainingPlatform'].setValue(row.trainingPlatform);
+    this.formValue.controls['courseName'].setValue(row.courseName);
+    this.formValue.controls['platformName'].setValue(row.platformName);
+    this.formValue.controls['courseUrl'].setValue(row.courseUrl);
+    this.formValue.controls['learningHours'].setValue(row.learningHours);
+    this.disabledValue = true;
+
+  }
+
+  
+
+   getCourses() {
+    this.addCourseService.getAllCourses().subscribe(res => {
+      this.courses = res;
+    })
+  }
+  hello() {
+    this
+  }
  
   //Calender
   minDate: any = "";
@@ -85,6 +145,23 @@ export class AddCourseComponent implements OnInit {
     this.minDate = year + "-" + month + "-" + toDate;
     console.log(this.minDate);
   }
+
+  // minDate2: any = "";
+
+  // getDate2() {
+  //   var date: any = this.formValue.value.startDate;
+  //   var toDate: any = date.getDate2();
+  //   if(toDate<10){
+  //     toDate = '0' + toDate;
+  //   }
+  //   var month = date.getMonth() + 1;
+  //   if (month < 10) {
+  //     month = '0' + month;
+  //   }
+  //   var year = date.getFullYear();
+  //   this.minDate2 = year + "-" + month + "-" + toDate;
+  //   console.log(this.minDate2);
+  // }
  
 
 // Validators
@@ -116,10 +193,28 @@ export class AddCourseComponent implements OnInit {
     return this.formValue.get('trainingType');
   }
 
- 
-  goToCourseList() {
-    this.router.navigate(['/courseList']);
+
+  search() {
+    if(this.searchText!=""){
+      this.courses = this.courses.filter(res => {
+        return (res.courseName.toLocaleLowerCase().match(this.searchText.toLocaleLowerCase()) ||res.platformName.toLocaleLowerCase().match(this.searchText.toLocaleLowerCase()))
+      });
+    
+    }else if (this.searchText == "") {
+      this.ngOnInit();
+      
+      } 
+  }
+
+  goToAddCourse() {
+    this.router.navigate(['/addcourse']);
+  }
+
+
+  resetForm() {
     this.formValue.reset();
+    this.disabledValue = false;
+    
   }
   
 }

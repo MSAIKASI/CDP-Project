@@ -14,9 +14,7 @@ export class AddCourseComponent implements OnInit {
   searchText:string ;
   courses: Course[];
   disabledValue = false;
-  
-  
-  
+
   formValue: FormGroup;
   courseModel: CourseModel = new CourseModel();
   
@@ -69,21 +67,21 @@ export class AddCourseComponent implements OnInit {
     this.courseModel.course.platformName = this.formValue.value.platformName;
     this.courseModel.course.courseUrl = this.formValue.value.courseUrl;
     this.courseModel.course.learningHours = this.formValue.value.learningHours;
-  
-    let findUrl = this.courses.filter(course => course.courseUrl == this.formValue.value.courseUrl);
-    if (findUrl.length >0) {
-      alert("This course is already existing "); 
-      return;
-    }
-    this.addCourseService.addNewCourse(this.courseModel).subscribe(
-      (res) => {
-        console.log(res);
-        alert('Course Added Successfully !!!');
-        this.formValue.reset();
-        this.getCourses()
+    
+      let findUrl = this.courses.filter(course => course.courseUrl == this.formValue.value.courseUrl);
+    if (findUrl.length > 0) {
+        alert("This course is already existing ");
+        return;
       }
-    );
-      
+      this.addCourseService.addNewCourse(this.courseModel).subscribe(
+        (res) => {
+          console.log(res);
+          alert('Course Added Successfully !!!');
+          this.formValue.reset();
+          this.getCourses()
+        }
+      );
+            
   }
 
   postAssignmentDetails() {

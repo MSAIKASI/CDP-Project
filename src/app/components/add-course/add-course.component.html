@@ -15,7 +15,7 @@
         type="button"
         class="btn btn-primary"
         data-toggle="modal"
-        data-target=".bd-example2-modal-lg"
+        data-target=".bd-example-modal-lg"
         (click)="resetForm()"
       >
         + Add New Course
@@ -266,7 +266,9 @@
         <button
           type="submit"
           class="btn btn-primary"
-          (click)="postAssignmentDetails()"
+          (click)="
+            disabledValue ? postAssignmentDetails() : postCourseDetails()
+          "
           [disabled]="formValue.invalid"
         >
           Submit
@@ -276,7 +278,7 @@
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal
 <div
   class="modal fade bd-example2-modal-lg"
   id="exampleModal"
@@ -483,4 +485,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

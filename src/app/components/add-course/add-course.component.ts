@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {  FormBuilder,FormControl,FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { CourseModel,Course } from 'src/app/models/course.model';
 import { AddCourseService } from 'src/app/services/addCourse.service';
 
@@ -22,7 +24,9 @@ export class AddCourseComponent implements OnInit {
 
   constructor(
     private formbuilder: FormBuilder,
-    private addCourseService: AddCourseService, private router: Router) {
+    private addCourseService: AddCourseService,
+    private router: Router,
+    public activeModal: NgbActiveModal) {
     
     }
 

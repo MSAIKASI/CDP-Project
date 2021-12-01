@@ -1,6 +1,6 @@
 <div class="form-control container">
   <h1 class="text-center">Add Course</h1>
-  <div class="form-row">
+  <div class="form-row d-flex flex-row">
     <div class="col-md-6">
       <input
         type="text"
@@ -12,8 +12,10 @@
     </div>
     <div class="d-flex justify-content-end col-md-6 p-2">
       <button
-        class="btn btn-outline-primary mb-2 mr-2"
-        (click)="openLg(content)"
+        type="button"
+        class="btn btn-primary"
+        data-toggle="modal"
+        data-target=".bd-example-modal-lg"
         (click)="resetForm()"
       >
         + Add New Course
@@ -27,35 +29,32 @@
       </h3>
       <div class="card-body alert-secondary">
         <div class="form-row">
-          <h4 class="card-title">Training Platform :</h4>
-
-          <h4 class="card-text ml-2">
-            {{ row.trainingPlatform | uppercase }}
-          </h4>
+          <h5 class="card-title">
+            Training Platform :<span>{{
+              row.trainingPlatform | uppercase
+            }}</span>
+          </h5>
         </div>
         <div class="form-row">
-          <h4 class="card-title">Platform :</h4>
-
-          <h4 class="card-text ml-2">
-            {{ row.platformName | uppercase }}
-          </h4>
+          <h5 class="card-title">
+            Platform : <span>{{ row.platformName | uppercase }}</span>
+          </h5>
         </div>
-
+        <div class="form-row">
+          <h5 class="card-title">
+            Learning Hours :<span> {{ row.learningHours }}</span>
+          </h5>
+        </div>
         <div class="d-flex justify-content-end">
           <button
-            class="btn btn-outline-primary mb-2 mr-2"
-            (click)="openLg(content)"
+            type="button"
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target=".bd-example-modal-lg"
             (click)="onEdit(row)"
           >
             Enroll
           </button>
-        </div>
-        <div class="form-row">
-          <h4 class="card-title">Learning Hours :</h4>
-
-          <h4 class="card-text ml-2">
-            {{ row.learningHours }}
-          </h4>
         </div>
       </div>
     </div>
@@ -65,19 +64,20 @@
 <!-- Modal -->
 
 <div class="modal-header">
-  <h4 class="modal-title">Add Course</h4>
+  <h3 class="modal-title" id="myLargeModalLabel">Add Course</h3>
   <button
     type="button"
     class="close"
+    data-dismiss="modal"
     aria-label="Close"
-    (click)="modal.dismiss('Cross click')"
+    (click)="activeModal.dismiss('Cross click')"
   >
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
   <form [formGroup]="formValue" class="needs-validation">
-    <div class="form-row">
+    <div class="row">
       <div class="form-group col-md-4">
         <label for="inputCourseName4">Training Platform</label>
         <input
@@ -94,7 +94,6 @@
           >Training Platform is Required</small
         >
       </div>
-
       <div class="form-group col-md-4">
         <label for="inputCourseName4">Course Name</label>
         <input
@@ -111,7 +110,6 @@
           >Course Name is Required</small
         >
       </div>
-
       <div class="form-group col-md-4">
         <label for="inputPlatform4">Platform Name</label>
         <input
@@ -129,8 +127,7 @@
         >
       </div>
     </div>
-
-    <div class="form-row">
+    <div class="row">
       <div class="form-group col-md-6">
         <label for="inputCourseUrl">Course URL</label>
         <input
@@ -147,8 +144,7 @@
           >Course URL is Required</small
         >
       </div>
-
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-6">
         <label for="inputNoOfHours4">Learning Hours</label>
         <input
           type="number"
@@ -166,9 +162,8 @@
         >
       </div>
     </div>
-
-    <div class="form-row">
-      <div class="form-group col-md-4">
+    <div class="row">
+      <div class="form-group col-md-6">
         <label for="inputStartDate4">Start Date</label>
         <input
           type="date"
@@ -184,8 +179,7 @@
           >Start Date is Required</small
         >
       </div>
-
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-6">
         <label for="inputEndDate4">End Date</label>
         <input
           type="date"
@@ -200,9 +194,8 @@
         >
       </div>
     </div>
-
-    <div class="form-row">
-      <div class="form-group col-md-4">
+    <div class="row">
+      <div class="form-group col-md-6">
         <label for="category4">Category</label>
         <select
           name="category"
@@ -219,8 +212,7 @@
           >This Field is Required</small
         >
       </div>
-
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-6">
         <label for="trainingType4">Training Type</label>
         <select
           name="trainingType"
@@ -245,14 +237,14 @@
     type="button"
     class="btn btn-secondary"
     data-dismiss="modal"
-    (click)="resetForm()"
+    (click)="formValue.reset()"
+    (click)="activeModal.close('Close click')"
   >
     Close
   </button>
   <button
     type="submit"
     class="btn btn-primary"
-    (click)="modal.close('Close click')"
     (click)="disabledValue ? postAssignmentDetails() : postCourseDetails()"
     [disabled]="formValue.invalid"
   >

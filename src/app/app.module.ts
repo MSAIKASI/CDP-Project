@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { AddCourseComponent } from './components/add-course/add-course.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -29,7 +31,9 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     NgbPaginationModule,
     NgbAlertModule,
-    NgbModule
+    NgbModule,
+    ModalModule,
+    BrowserAnimationsModule
     
    
   ],

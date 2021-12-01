@@ -3,7 +3,5 @@ export class CourseAssignmentModel {
     endDate: Date;
     category: string;
     trainingType!: string;
-    userId: string = "kasim";
-    
-
+    userId: string = "kasim";  
   }

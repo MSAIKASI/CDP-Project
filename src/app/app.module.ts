@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,8 +26,10 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
-    CommonModule, NgbPaginationModule,
-    NgbAlertModule
+    CommonModule,
+    NgbPaginationModule,
+    NgbAlertModule,
+    NgbModule
     
    
   ],

@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { AddCourseComponent } from './components/add-course/add-course.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CommonModule } from '@angular/common';
@@ -24,7 +25,8 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
-    CommonModule
+    CommonModule, NgbPaginationModule,
+    NgbAlertModule
     
    
   ],

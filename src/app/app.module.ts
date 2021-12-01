@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CommonModule } from '@angular/common';
+import { ManagerAddCourseComponent } from './components/manager-add-course/manager-add-course.component';
 
 
 
@@ -15,6 +16,7 @@ import { CommonModule } from '@angular/common';
   declarations: [
     AppComponent,
     AddCourseComponent,
+    ManagerAddCourseComponent,
     
   ],
   imports: [
@@ -24,7 +26,8 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
-    CommonModule
+    CommonModule,
+ 
     
    
   ],

@@ -19,7 +19,7 @@ export class  CourseModel  {
   }
 
 }
-export interface Course {
+export class Course {
   courseId?: number;
   trainingPlatform: string ;
   courseName: string;

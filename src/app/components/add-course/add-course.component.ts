@@ -80,15 +80,13 @@ export class AddCourseComponent implements OnInit {
           console.log(res);
           alert('Course Added Successfully !!!');
           this.formValue.reset();
-          this.getCourses()
+          this.getCourses();
         }
       );
             
   }
 
-  find(userId: any, courseId: any) {
-    
-  }
+  
 
   postAssignmentDetails() {
     this.courseModel.courseAssignment.startDate =this.formValue.value.startDate;
@@ -105,7 +103,7 @@ export class AddCourseComponent implements OnInit {
           console.log(res);
           alert('Course Added Successfully !!!');
         this.formValue.reset();
-        
+        this.getCourses();
         }
       );  
   }

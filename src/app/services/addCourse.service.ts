@@ -3,12 +3,13 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { CourseAssignmentModel } from "../models/courseAssignment.model";
-import { CourseModel } from "../models/course.model";
+import { Course, CourseModel } from "../models/course.model";
 
 @Injectable({providedIn:'root'})
 export class AddCourseService {
    courseAssignment: CourseAssignmentModel = new CourseAssignmentModel();
-   courseModel: CourseModel;
+  courseModel: CourseModel;
+  course: Course;
   baseUrl = 'http://localhost:8080/api/addassignment';
 
   baseUrl2 = 'http://localhost:8080/api/course/';
@@ -32,8 +33,8 @@ export class AddCourseService {
   }
 
 
-  createCourse(courseModel: CourseModel) :Observable<Object>{
-    return this.httpClient.post(`${this.baseUrl2}/create/`,courseModel).pipe(
+  createCourse(course: Course) :Observable<Object>{
+    return this.httpClient.post(`${this.baseUrl2}/create/`,course).pipe(
       map((res: any) => {
         return res;
       })

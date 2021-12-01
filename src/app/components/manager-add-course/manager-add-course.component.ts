@@ -28,7 +28,7 @@ export class ManagerAddCourseComponent implements OnInit {
       
     });
     
-    this.getCourses();
+  
      
     
     this.formValue = new FormGroup({

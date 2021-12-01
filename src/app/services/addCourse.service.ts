@@ -12,7 +12,7 @@ export class AddCourseService {
   course: Course;
   baseUrl = 'http://localhost:8080/api/addassignment';
 
-  baseUrl2 = 'http://localhost:8080/api/course/';
+  baseUrl2 = 'http://localhost:8080/api/course';
 
   constructor(private httpClient: HttpClient) {}
 

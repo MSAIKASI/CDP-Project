@@ -40,10 +40,7 @@ export class AddCourseComponent implements OnInit {
       
     });
     this.getDate();
-    
     this.getCourses();
-     
-    
     this.formValue = new FormGroup({
       trainingPlatform: new FormControl(null, Validators.required),
       courseName: new FormControl(null, Validators.required),

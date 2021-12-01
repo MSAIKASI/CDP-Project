@@ -39,8 +39,10 @@ export class AddCourseComponent implements OnInit {
       trainingType: [''], 
       
     });
-    this.getCourses();
     this.getDate();
+    
+    this.getCourses();
+     
     
     this.formValue = new FormGroup({
       trainingPlatform: new FormControl(null, Validators.required),
@@ -84,6 +86,10 @@ export class AddCourseComponent implements OnInit {
             
   }
 
+  find(userId: any, courseId: any) {
+    
+  }
+
   postAssignmentDetails() {
     this.courseModel.courseAssignment.startDate =this.formValue.value.startDate;
     this.courseModel.courseAssignment.endDate = this.formValue.value.endDate;
@@ -117,14 +123,13 @@ export class AddCourseComponent implements OnInit {
 
   
 
-   getCourses() {
-    this.addCourseService.getAllCourses().subscribe(res => {
-      this.courses = res;
-    })
+  getCourses() {
+      this.addCourseService.getAllCourses().subscribe(res => {
+        this.courses = res;
+      })
+      return;
   }
-  hello() {
-    this
-  }
+  
  
   //Calender
   minDate: any = "";
@@ -144,22 +149,7 @@ export class AddCourseComponent implements OnInit {
     console.log(this.minDate);
   }
 
-  // minDate2: any = "";
-
-  // getDate2() {
-  //   var date: any = this.formValue.value.startDate;
-  //   var toDate: any = date.getDate2();
-  //   if(toDate<10){
-  //     toDate = '0' + toDate;
-  //   }
-  //   var month = date.getMonth() + 1;
-  //   if (month < 10) {
-  //     month = '0' + month;
-  //   }
-  //   var year = date.getFullYear();
-  //   this.minDate2 = year + "-" + month + "-" + toDate;
-  //   console.log(this.minDate2);
-  // }
+  
  
 
 // Validators
@@ -193,7 +183,7 @@ export class AddCourseComponent implements OnInit {
 
 
   search() {
-    if(this.searchText!=""){
+    if(this.searchText=""){
       this.courses = this.courses.filter(res => {
         return (res.courseName.toLocaleLowerCase().match(this.searchText.toLocaleLowerCase()) ||res.platformName.toLocaleLowerCase().match(this.searchText.toLocaleLowerCase()))
       });

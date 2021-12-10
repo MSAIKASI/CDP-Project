@@ -41,9 +41,6 @@ export class AddCourseService {
     );
   }
 
-  // getCourseBy(courseId:number) {
-  //   return this.httpClient.get<any>(`${this.baseUrl}/${this.courseAssignmentModel.courseId}`);
-  // }
   
   getAllCourses() {
     return this.httpClient.get<any>( `${this.baseUrl2}/findallcourses`).pipe(
@@ -53,9 +50,7 @@ export class AddCourseService {
     );
   }
 
-  getCourseByName(id:number) {
-    return this.httpClient.get<any>(`${this.baseUrl2}/find/${id}`);
-  }
+ 
 
 
 

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container form-control">
   <h1 class="text-center">Add Course</h1>
   <div class="form-row">
     <div class="col-md-6">
@@ -24,7 +24,7 @@
   </div>
 
   <div *ngFor="let row of courses">
-    <div class="card mt-3">
+    <div class="card mt-3 form-control">
       <h3 class="card-header bg-dark text-light">
         {{ row.courseName | uppercase }}
       </h3>
